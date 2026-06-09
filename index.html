@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBG Profesores - Autenticación</title>
+    
+    <!-- Firebase SDK v10+ (Modular) -->
+    <script type="module">
+        // Imports aquí abajo
+
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+        }
+
+        .screen {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== PANTALLA SPLASH ========== */
+        .splash-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            gap: 40px;
+        }
+
+        .imagen-centrada {
+        display: block;    /* Convierte la imagen en un bloque */
+        margin-left: auto; /* Empuja la imagen desde la izquierda */
+        margin-right: auto;/* Empuja la imagen desde la derecha */
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 50px;
+            font-weight: 700;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .splash-screen h1 {
+            font-size: 36px;
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Loader de puntitos saltando */
+        .loader {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: white;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+
+        .dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        .dot:nth-child(3) {
+            animation-delay: 0s;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ========== PANTALLA DE LOGIN ========== */
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .login-screen h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .login-screen > p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .input-wrapper:focus-within {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .input-prefix {
+            padding: 12px 14px;
+            background: #f5f5f5;
+            color: #667eea;
+            font-weight: 600;
+            border-right: 1px solid #ddd;
+            user-select: none;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 12px 14px;
+            border: none;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-primary:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            display: none;
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            border-left: 4px solid #c33;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .loading {
+            display: none;
+        }
+
+        .loading.show {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .forgot-link {
+            font-size: 13px;
+            color: #667eea;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .forgot-link:hover {
+            color: #764ba2;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 30px 20px;
+            }
+
+            .login-screen h2 {
+                font-size: 24px;
+            }
+
+            .splash-screen h1 {
+                font-size: 28px;
+            }
+
+            .logo {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PANTALLA SPLASH -->
+        <div class="screen active" id="splashScreen">
+            <div class="splash-screen">
+                <img src="assets/images/logo.png" alt="SBG Profesores" class="logo">
+                <h1>Bienvenido</h1>
+                <div class="loader">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE LOGIN -->
+        <div class="screen" id="loginScreen">
+            <div class="card login-screen">
+                <img src="assets/images/logo.png" alt="SBG Profesores" class="imagen-centrada" style="width: 80px; height: 80px; margin-bottom: 20px;">
+                <h2>Iniciar sesión</h2>
+                <p>Ingresa tu código y contraseña</p>
+
+                <div class="error-message" id="errorMessage"></div>
+
+                <div class="form-group">
+                    <label for="codigo">Código</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="codigo" placeholder="Ingresa tu código" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="loginBtn" onclick="handleLogin()">
+                    <span class="loading" id="loadingSpinner"></span>
+                    Iniciar sesión
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // ============================================
+        // IMPORTAR FIREBASE SDK v10+ (Modular)
+        // ============================================
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+        // ============================================
+        // CONFIGURACIÓN DE FIREBASE
+        // ============================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyDmryXRpBKEugGEqUeLYv6nQ5RSTQSEzow",
+            authDomain: "sbgprofesores-70c64.firebaseapp.com",
+            projectId: "sbgprofesores-70c64",
+            storageBucket: "sbgprofesores-70c64.firebasestorage.app",
+            messagingSenderId: "164132013513",
+            appId: "1:164132013513:web:a434a1e6fd2127c6b75418",
+            measurementId: "G-J1E4VXW1J4"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // ============================================
+        // SPLASH SCREEN - Transición automática
+        // ============================================
+        setTimeout(() => {
+            document.getElementById('splashScreen').classList.remove('active');
+            document.getElementById('loginScreen').classList.add('active');
+        }, 3000); // 3 segundos en la pantalla de bienvenida
+
+        // ============================================
+        // FUNCIONES DE AUTENTICACIÓN
+        // ============================================
+        window.handleLogin = function() {
+            const codigo = document.getElementById('codigo').value.trim();
+            const password = document.getElementById('password').value;
+            const btn = document.getElementById('loginBtn');
+            const loader = document.getElementById('loadingSpinner');
+
+            // Validación
+            if (!codigo || !password) {
+                showError('Por favor completa todos los campos');
+                return;
+            }
+
+            if (codigo.length === 0) {
+                showError('El código no puede estar vacío');
+                return;
+            }
+            const email = codigo + '@sbgdirector.com';
+
+            btn.disabled = true;
+            loader.classList.add('show');
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    btn.disabled = false;
+                    loader.classList.remove('show');
+                    
+                    // Redirigir al dashboard
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 500);
+                })
+                .catch((error) => {
+                    btn.disabled = false;
+                    loader.classList.remove('show');
+                    handleAuthError(error);
+                });
+        };
+
+        window.handlePasswordReset = function() {
+            const codigo = document.getElementById('codigo').value.trim();
+            
+            if (!codigo) {
+                showError('Por favor ingresa tu código');
+                return;
+            }
+
+            const email = codigo + '@sbgdirector.com';
+
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    alert('Email de recuperación enviado a: ' + email);
+                    document.getElementById('codigo').value = '';
+                    document.getElementById('password').value = '';
+                })
+                .catch((error) => {
+                    handleAuthError(error);
+                });
+        };
+
+        function handleAuthError(error) {
+            const errorCode = error.code;
+            let errorMsg = error.message;
+
+            const errorMessages = {
+                'auth/invalid-email': 'Email inválido',
+                'auth/user-not-found': 'Usuario no encontrado',
+                'auth/wrong-password': 'Contraseña incorrecta',
+                'auth/user-disabled': 'Usuario deshabilitado',
+                'auth/too-many-requests': 'Demasiados intentos. Intenta más tarde.'
+            };
+
+            errorMsg = errorMessages[errorCode] || errorMsg;
+            showError(errorMsg);
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+        }
+
+        function clearError() {
+            document.getElementById('errorMessage').classList.remove('show');
+        }
+
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && document.getElementById('loginScreen').classList.contains('active')) {
+                handleLogin();
+            }
+        });
+
+        document.getElementById('codigo').addEventListener('input', clearError);
+        document.getElementById('password').addEventListener('input', clearError);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log('Usuario ya autenticado:', user.email);
+                window.location.href = 'dashboard.html';
+            }
+        });
+    </script>
+</body>
+</html>
