@@ -523,6 +523,67 @@
             color: var(--text-secondary);
         }
 
+        .schedule-financial-row td {
+            vertical-align: top;
+            background: var(--bg-white);
+            border-top: 2px solid var(--border-color);
+        }
+
+        .schedule-financial-label {
+            font-weight: 700;
+            background: var(--primary-light) !important;
+            color: var(--primary) !important;
+        }
+
+        .day-financial-summary {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 150px;
+        }
+
+        .financial-summary-box {
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-white);
+        }
+
+        .financial-summary-box span {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 600;
+            line-height: 1.25;
+        }
+
+        .financial-summary-box strong {
+            color: var(--text-primary);
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .financial-summary-box.total {
+            border-left: 4px solid var(--primary);
+        }
+
+        .financial-summary-box.teacher-payment {
+            border-left: 4px solid var(--warning);
+        }
+
+        .financial-summary-box.profit {
+            border-left: 4px solid var(--success);
+        }
+
+        .financial-summary-box.profit.negative {
+            border-left-color: var(--error);
+        }
+
+        .financial-summary-box.profit.negative strong {
+            color: var(--error);
+        }
+
         /* ========== TOGGLES ========== */
         .btn-toggle {
             padding: 10px 20px;
@@ -647,6 +708,278 @@
         .detail-value {
             color: var(--text-primary);
             font-weight: 500;
+        }
+
+        .hourly-rate-section {
+            margin-top: 22px;
+            padding: 20px;
+            background: var(--primary-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .hourly-rate-section h4 {
+            margin: 0 0 8px;
+            color: var(--text-primary);
+            font-size: 17px;
+        }
+
+        .hourly-rate-current {
+            margin-bottom: 14px;
+            color: var(--text-secondary);
+        }
+
+        .hourly-rate-current strong {
+            color: var(--text-primary);
+        }
+
+        .hourly-rate-editor {
+            display: flex;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .hourly-rate-input-group {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .hourly-rate-input-group span {
+            padding: 0 12px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            font-weight: 600;
+        }
+
+        .hourly-rate-input-group input {
+            width: 100%;
+            min-width: 70px;
+            padding: 11px 4px;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: var(--text-primary);
+            font: inherit;
+        }
+
+        @media (max-width: 560px) {
+            .hourly-rate-editor {
+                flex-direction: column;
+            }
+        }
+
+        .teacher-monthly-salary-section {
+            margin-top: 18px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--bg-white);
+        }
+
+        .teacher-monthly-salary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .teacher-monthly-salary-header h4 {
+            margin: 0 0 5px;
+            color: var(--text-primary);
+            font-size: 17px;
+        }
+
+        .teacher-monthly-salary-header p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .teacher-monthly-salary-header label {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .teacher-monthly-salary-header select {
+            min-width: 170px;
+            padding: 9px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-white);
+            color: var(--text-primary);
+            font: inherit;
+        }
+
+        .teacher-monthly-salary-card {
+            padding: 22px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .teacher-monthly-salary-card .salary-month-label {
+            display: block;
+            margin-bottom: 7px;
+            opacity: 0.9;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .teacher-monthly-salary-card .salary-total {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        .teacher-monthly-salary-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            font-size: 13px;
+        }
+
+        .teacher-monthly-salary-meta span {
+            padding: 6px 9px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        @media (max-width: 620px) {
+            .teacher-monthly-salary-header {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .teacher-monthly-salary-header select {
+                width: 100%;
+            }
+        }
+
+        .profile-monthly-profit-section {
+            margin-bottom: 25px;
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            background: var(--bg-white);
+        }
+
+        .profile-monthly-profit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 18px;
+            margin-bottom: 18px;
+        }
+
+        .profile-monthly-profit-header h3 {
+            margin: 0 0 5px;
+            color: var(--text-primary);
+            font-size: 19px;
+        }
+
+        .profile-monthly-profit-header p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .profile-monthly-profit-header label {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .profile-monthly-profit-header select {
+            min-width: 180px;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-white);
+            color: var(--text-primary);
+            font: inherit;
+        }
+
+        .profile-monthly-profit-card {
+            padding: 24px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            color: white;
+        }
+
+        .profile-monthly-profit-card.negative {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+        }
+
+        .profile-monthly-profit-card .profit-month-label {
+            display: block;
+            margin-bottom: 7px;
+            opacity: 0.9;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .profile-monthly-profit-card .profit-total {
+            display: block;
+            margin-bottom: 18px;
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .profile-monthly-profit-breakdown {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .profile-monthly-profit-breakdown div {
+            padding: 11px 12px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .profile-monthly-profit-breakdown span,
+        .profile-monthly-profit-breakdown strong {
+            display: block;
+        }
+
+        .profile-monthly-profit-breakdown span {
+            margin-bottom: 4px;
+            opacity: 0.85;
+            font-size: 11px;
+        }
+
+        .profile-monthly-profit-breakdown strong {
+            font-size: 15px;
+        }
+
+        @media (max-width: 620px) {
+            .profile-monthly-profit-header {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .profile-monthly-profit-header select {
+                width: 100%;
+            }
+
+            .profile-monthly-profit-breakdown {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ========== STATUS BADGE ========== */
@@ -1205,6 +1538,25 @@
                         </div>
                     </div>
 
+                    <section class="profile-monthly-profit-section">
+                        <div class="profile-monthly-profit-header">
+                            <div>
+                                <h3>Ganancia mensual</h3>
+                                <p>Resultado de todas las clases realizadas en el mes</p>
+                            </div>
+                            <label>
+                                Mes del año actual
+                                <select id="profileProfitMonthSelect" onchange="updateProfileMonthlyProfit()"></select>
+                            </label>
+                        </div>
+                        <div id="profileMonthlyProfitResult">
+                            <div class="profile-monthly-profit-card">
+                                <span class="profit-month-label">Cargando resumen...</span>
+                                <strong class="profit-total">S/. 0.00</strong>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- ACCIONES -->
                     <div class="card">
                         <h3 style="margin-bottom: 20px; color: var(--text-primary); font-family: 'Sora', sans-serif; font-size: 18px;">Ayuda y Soporte</h3>
@@ -1711,6 +2063,8 @@
             selectedStudentId: null,
             selectedPaymentStudent: null,
             currentUserFilter: 'todos',
+            selectedTeacherSalaryMonth: new Date().getMonth(),
+            selectedProfileProfitMonth: new Date().getMonth(),
             currentTheme: localStorage.getItem('sbgTheme') || 'light',
             currentFont: localStorage.getItem('sbgFont') || 'sans',
             currentFontSize: localStorage.getItem('sbgFontSize') || '100'
@@ -1722,6 +2076,7 @@
             applyFont(appState.currentFont);
             applySizeValue(appState.currentFontSize);
             initializeMonthSelect();
+            initializeProfileProfitMonthSelect();
         });
 
         // ========== AUTHENTICATION HANDLER ==========
@@ -2079,6 +2434,10 @@
                 if (document.getElementById('weekSelect')?.value) {
                     window.updateSchedule();
                 }
+                if (document.getElementById('teacherMonthlySalaryResult') && appState.selectedUserId) {
+                    renderTeacherMonthlySalary(appState.selectedUserId);
+                }
+                renderProfileMonthlyProfit();
             } catch (error) {
                 console.error("❌ Error al cargar clases:", error);
             }
@@ -2252,11 +2611,224 @@
             return dias[fecha.getDay()];
         }
 
+        function getBillableHours(durationMinutes) {
+            const duration = Number(durationMinutes);
+            if (duration >= 45 && duration <= 60) return 1;
+            if (duration >= 90 && duration <= 120) return 2;
+            return 0;
+        }
+
+        function getFinancialNumber(value) {
+            const number = Number(value);
+            return Number.isFinite(number) && number >= 0 ? number : 0;
+        }
+
+        function isCompletedClassForFinancials(clase) {
+            const attendanceCount = Array.isArray(clase?.asistieron) ? clase.asistieron.length : 0;
+            const completedStates = ['realizada', 'realizado', 'completada', 'completado', 'finalizada', 'finalizado', 'hecha'];
+            const status = String(clase?.estado || '').trim().toLowerCase();
+            return attendanceCount > 0 || completedStates.includes(status);
+        }
+
+        function calculateDayFinancials(clases) {
+            return clases.reduce((summary, clase) => {
+                if (!isCompletedClassForFinancials(clase)) return summary;
+
+                const billableHours = getBillableHours(clase.duracionMin);
+                if (billableHours === 0) return summary;
+
+                const attendeeIds = Array.from(new Set(Array.isArray(clase.asistieron) ? clase.asistieron : []));
+                const classTotal = attendeeIds.reduce((total, studentId) => {
+                    const student = appState.allUsers.find((user) => user.id === studentId)
+                        || appState.allStudents.find((user) => user.id === studentId);
+                    return total + (getFinancialNumber(student?.membresia) * billableHours);
+                }, 0);
+
+                const professorId = getClassProfessorId(clase);
+                const professor = appState.allUsers.find((user) => user.id === professorId);
+                const professorPayment = getFinancialNumber(professor?.sueldo) * billableHours;
+
+                summary.total += classTotal;
+                summary.professorPayment += professorPayment;
+                return summary;
+            }, { total: 0, professorPayment: 0 });
+        }
+
+        function formatSoles(value) {
+            const amount = Number(value) || 0;
+            return `S/. ${new Intl.NumberFormat('es-PE', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount)}`;
+        }
+
+        function getCurrentYearMonthOptions() {
+            const currentYear = new Date().getFullYear();
+            return Array.from({ length: 12 }, (_, monthIndex) => {
+                const monthName = new Date(currentYear, monthIndex, 1).toLocaleDateString('es-PE', {
+                    month: 'long'
+                });
+                return {
+                    monthIndex,
+                    label: monthName.charAt(0).toUpperCase() + monthName.slice(1),
+                    currentYear
+                };
+            });
+        }
+
+        function initializeProfileProfitMonthSelect() {
+            const select = document.getElementById('profileProfitMonthSelect');
+            if (!select) return;
+
+            select.innerHTML = getCurrentYearMonthOptions().map((option) => `
+                <option value="${option.monthIndex}" ${option.monthIndex === appState.selectedProfileProfitMonth ? 'selected' : ''}>
+                    ${escapeHtml(option.label)} ${option.currentYear}
+                </option>
+            `).join('');
+
+            renderProfileMonthlyProfit();
+        }
+
+        function calculateProfileMonthlyProfit(monthIndex, year) {
+            const monthClasses = appState.allClases.filter((clase) => {
+                const classDate = getClassDate(clase);
+                return classDate
+                    && classDate.getFullYear() === year
+                    && classDate.getMonth() === monthIndex;
+            });
+            const summary = calculateDayFinancials(monthClasses);
+            return {
+                total: summary.total,
+                professorPayment: summary.professorPayment,
+                profit: summary.total - summary.professorPayment
+            };
+        }
+
+        function renderProfileMonthlyProfit() {
+            const select = document.getElementById('profileProfitMonthSelect');
+            const resultContainer = document.getElementById('profileMonthlyProfitResult');
+            if (!select || !resultContainer) return;
+
+            const selectedMonth = Number(select.value);
+            const currentYear = new Date().getFullYear();
+            const summary = calculateProfileMonthlyProfit(selectedMonth, currentYear);
+            const monthOption = getCurrentYearMonthOptions().find((option) => option.monthIndex === selectedMonth);
+            const monthLabel = monthOption?.label || 'Mes';
+
+            resultContainer.innerHTML = `
+                <div class="profile-monthly-profit-card${summary.profit < 0 ? ' negative' : ''}">
+                    <span class="profit-month-label">Ganancia de ${escapeHtml(monthLabel)} ${currentYear}</span>
+                    <strong class="profit-total">${formatSoles(summary.profit)}</strong>
+                    <div class="profile-monthly-profit-breakdown">
+                        <div>
+                            <span>Ingresos de alumnos</span>
+                            <strong>${formatSoles(summary.total)}</strong>
+                        </div>
+                        <div>
+                            <span>Pago a profesores</span>
+                            <strong>${formatSoles(summary.professorPayment)}</strong>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.updateProfileMonthlyProfit = function() {
+            const select = document.getElementById('profileProfitMonthSelect');
+            if (!select) return;
+            appState.selectedProfileProfitMonth = Number(select.value);
+            renderProfileMonthlyProfit();
+        };
+
+        function calculateTeacherMonthlySalary(professorId, monthIndex, year) {
+            const professor = appState.allUsers.find((user) => user.id === professorId);
+            const hourlyRate = getFinancialNumber(professor?.sueldo);
+            let workedHours = 0;
+            let countedClasses = 0;
+
+            appState.allClases.forEach((clase) => {
+                if (getClassProfessorId(clase) !== professorId || !isCompletedClassForFinancials(clase)) return;
+
+                const classDate = getClassDate(clase);
+                if (!classDate || classDate.getFullYear() !== year || classDate.getMonth() !== monthIndex) return;
+
+                const billableHours = getBillableHours(clase.duracionMin);
+                if (billableHours === 0) return;
+
+                workedHours += billableHours;
+                countedClasses += 1;
+            });
+
+            return {
+                hourlyRate,
+                workedHours,
+                countedClasses,
+                monthlySalary: workedHours * hourlyRate
+            };
+        }
+
+        function renderTeacherMonthlySalary(professorId) {
+            const resultContainer = document.getElementById('teacherMonthlySalaryResult');
+            const monthSelect = document.getElementById('teacherSalaryMonthSelect');
+            if (!resultContainer || !monthSelect) return;
+
+            const selectedMonth = Number(monthSelect.value);
+            const currentYear = new Date().getFullYear();
+            const summary = calculateTeacherMonthlySalary(professorId, selectedMonth, currentYear);
+            const monthOption = getCurrentYearMonthOptions().find((option) => option.monthIndex === selectedMonth);
+            const monthLabel = monthOption?.label || 'Mes';
+
+            resultContainer.innerHTML = `
+                <div class="teacher-monthly-salary-card">
+                    <span class="salary-month-label">Sueldo de ${escapeHtml(monthLabel)} ${currentYear}</span>
+                    <strong class="salary-total">${formatSoles(summary.monthlySalary)}</strong>
+                    <div class="teacher-monthly-salary-meta">
+                        <span>${summary.workedHours} hora${summary.workedHours === 1 ? '' : 's'} trabajada${summary.workedHours === 1 ? '' : 's'}</span>
+                        <span>${summary.countedClasses} clase${summary.countedClasses === 1 ? '' : 's'} contabilizada${summary.countedClasses === 1 ? '' : 's'}</span>
+                        <span>${formatSoles(summary.hourlyRate)}/hora</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function appendDailyFinancialSummaries(body, clases, dias) {
+            const tr = document.createElement('tr');
+            tr.className = 'schedule-financial-row';
+            tr.innerHTML = '<td class="schedule-financial-label">Resumen del día</td>';
+
+            dias.forEach((dia) => {
+                const dayClasses = clases.filter((clase) => obtenerDiaClase(clase) === dia);
+                const summary = calculateDayFinancials(dayClasses);
+                const profit = summary.total - summary.professorPayment;
+                const td = document.createElement('td');
+                td.innerHTML = `
+                    <div class="day-financial-summary">
+                        <div class="financial-summary-box total">
+                            <span>Total</span>
+                            <strong>${formatSoles(summary.total)}</strong>
+                        </div>
+                        <div class="financial-summary-box teacher-payment">
+                            <span>Pagar a los Profesores</span>
+                            <strong>${formatSoles(summary.professorPayment)}</strong>
+                        </div>
+                        <div class="financial-summary-box profit${profit < 0 ? ' negative' : ''}">
+                            <span>Ganancia</span>
+                            <strong>${formatSoles(profit)}</strong>
+                        </div>
+                    </div>
+                `;
+                tr.appendChild(td);
+            });
+
+            body.appendChild(tr);
+        }
+
 
 
         // ========== RENDER SCHEDULE TABLE - MOSTRAR TODAS LAS CLASES ==========
         function renderScheduleTable(clases) {
             const body = document.getElementById('scheduleBody');
+            const dias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
             
             const slotSet = new Set();
 
@@ -2270,12 +2842,11 @@
             });
 
             const horas = Array.from(slotSet).sort((a, b) => timeToMinutes(a) - timeToMinutes(b));
-            const dias = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo'];
-
             body.innerHTML = '';
 
             if (clases.length === 0) {
                 body.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--text-secondary); padding: 40px;">No hay clases programadas para esta semana</td></tr>';
+                appendDailyFinancialSummaries(body, clases, dias);
                 return;
             }
 
@@ -2324,6 +2895,8 @@
 
                 body.appendChild(tr);
             });
+
+            appendDailyFinancialSummaries(body, clases, dias);
         }
 
         // ========== OPEN CLASS MODAL ==========
@@ -2899,6 +3472,74 @@
                 </div>
             `;
 
+            const hourlyRateField = user.rol === 'profesor'
+                ? 'sueldo'
+                : (user.rol === 'alumno' ? 'membresia' : null);
+
+            if (hourlyRateField) {
+                const hourlyRateLabel = hourlyRateField === 'sueldo' ? 'Sueldo' : 'Membresía';
+                const hourlyRateValue = Number(user[hourlyRateField]);
+                const hasHourlyRate = user[hourlyRateField] !== ''
+                    && user[hourlyRateField] !== null
+                    && user[hourlyRateField] !== undefined
+                    && Number.isFinite(hourlyRateValue);
+
+                detailsHtml += `
+                    <section class="hourly-rate-section">
+                        <h4>${hourlyRateLabel}</h4>
+                        <p class="hourly-rate-current">
+                            Valor actual:
+                            <strong>${hasHourlyRate ? `S/. ${escapeHtml(String(hourlyRateValue))}/hora` : 'Sin registrar'}</strong>
+                        </p>
+                        <div class="hourly-rate-editor">
+                            <label class="hourly-rate-input-group" aria-label="${hourlyRateLabel} por hora">
+                                <span>S/.</span>
+                                <input
+                                    type="number"
+                                    id="userHourlyRateInput"
+                                    min="0"
+                                    step="0.01"
+                                    inputmode="decimal"
+                                    placeholder="0"
+                                    value="${hasHourlyRate ? escapeHtml(String(hourlyRateValue)) : ''}"
+                                >
+                                <span>/hora</span>
+                            </label>
+                            <button type="button" class="btn btn-primary" id="saveUserHourlyRateBtn">
+                                <span class="material-symbols-outlined">save</span>
+                                ${hasHourlyRate ? 'Actualizar' : 'Guardar'}
+                            </button>
+                        </div>
+                    </section>
+                `;
+            }
+
+            if (user.rol === 'profesor') {
+                const monthOptions = getCurrentYearMonthOptions();
+                const currentYear = new Date().getFullYear();
+                detailsHtml += `
+                    <section class="teacher-monthly-salary-section">
+                        <div class="teacher-monthly-salary-header">
+                            <div>
+                                <h4>Sueldo mensual</h4>
+                                <p>Horas realizadas durante ${currentYear}</p>
+                            </div>
+                            <label>
+                                Mes
+                                <select id="teacherSalaryMonthSelect">
+                                    ${monthOptions.map((option) => `
+                                        <option value="${option.monthIndex}" ${option.monthIndex === appState.selectedTeacherSalaryMonth ? 'selected' : ''}>
+                                            ${escapeHtml(option.label)} ${option.currentYear}
+                                        </option>
+                                    `).join('')}
+                                </select>
+                            </label>
+                        </div>
+                        <div id="teacherMonthlySalaryResult"></div>
+                    </section>
+                `;
+            }
+
             detailsHtml += `
                 <div class="btn-group" style="margin-top: 20px;">
                     ${user.rol === 'profesor' ? `
@@ -2916,12 +3557,75 @@
             document.getElementById('viewTeacherClassesBtn')?.addEventListener('click', () => {
                 window.openTeacherClasses(user.id);
             });
+            document.getElementById('saveUserHourlyRateBtn')?.addEventListener('click', () => {
+                window.saveUserHourlyRate(user.id, hourlyRateField);
+            });
+            document.getElementById('teacherSalaryMonthSelect')?.addEventListener('change', (event) => {
+                appState.selectedTeacherSalaryMonth = Number(event.target.value);
+                renderTeacherMonthlySalary(user.id);
+            });
+            if (user.rol === 'profesor') {
+                renderTeacherMonthlySalary(user.id);
+            }
             document.getElementById('deleteSelectedUserBtn')?.addEventListener('click', () => {
                 window.deleteUser(user.id);
             });
         }
 
         window.selectUser = selectUser;
+
+        // ========== SAVE USER HOURLY RATE ==========
+        window.saveUserHourlyRate = async function(userId, fieldName) {
+            if (!['sueldo', 'membresia'].includes(fieldName)) return;
+
+            const input = document.getElementById('userHourlyRateInput');
+            const saveButton = document.getElementById('saveUserHourlyRateBtn');
+            const rawValue = input?.value.trim() || '';
+            const hourlyRate = Number(rawValue);
+
+            if (rawValue === '' || !Number.isFinite(hourlyRate) || hourlyRate < 0) {
+                alert('Ingresa un número válido mayor o igual a 0.');
+                input?.focus();
+                return;
+            }
+
+            try {
+                if (saveButton) {
+                    saveButton.disabled = true;
+                    saveButton.innerHTML = '<span class="material-symbols-outlined">hourglass_top</span> Guardando...';
+                }
+
+                await updateDoc(doc(db, 'usuarios', userId), {
+                    [fieldName]: hourlyRate,
+                    updatedAt: serverTimestamp()
+                });
+
+                const userIndex = appState.allUsers.findIndex((item) => item.id === userId);
+                if (userIndex !== -1) {
+                    appState.allUsers[userIndex] = {
+                        ...appState.allUsers[userIndex],
+                        [fieldName]: hourlyRate
+                    };
+                    selectUser(appState.allUsers[userIndex]);
+                }
+
+                if (document.getElementById('weekSelect')?.value) {
+                    window.updateSchedule();
+                }
+
+                renderProfileMonthlyProfit();
+
+                const label = fieldName === 'sueldo' ? 'Sueldo' : 'Membresía';
+                alert(`✅ ${label} guardado: S/. ${hourlyRate}/hora`);
+            } catch (error) {
+                console.error('❌ Error al guardar el valor por hora:', error);
+                alert('❌ No se pudo guardar el valor. Inténtalo nuevamente.');
+                if (saveButton) {
+                    saveButton.disabled = false;
+                    saveButton.innerHTML = '<span class="material-symbols-outlined">save</span> Guardar';
+                }
+            }
+        };
 
         // ========== DELETE USER ==========
         window.deleteUser = function(userId) {
