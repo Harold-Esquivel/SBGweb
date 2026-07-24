@@ -1126,6 +1126,301 @@
             color: var(--error);
         }
 
+        .payment-calendar-shell {
+            overflow: hidden;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .payment-calendar-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .payment-calendar-navigation,
+        .payment-calendar-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .payment-calendar-title {
+            min-width: 210px;
+            margin: 0;
+            color: var(--text-primary);
+            font-family: 'Sora', sans-serif;
+            font-size: 21px;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        .payment-calendar-weekdays,
+        .payment-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+        }
+
+        .payment-calendar-weekdays {
+            background: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .payment-calendar-weekday {
+            padding: 11px 8px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .payment-calendar-day {
+            min-height: 138px;
+            padding: 9px;
+            background: var(--bg-white);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .payment-calendar-day:nth-child(7n) {
+            border-right: 0;
+        }
+
+        .payment-calendar-day.outside-month {
+            background: var(--bg-light);
+            opacity: 0.55;
+        }
+
+        .payment-calendar-day.today {
+            background: rgba(102, 126, 234, 0.06);
+            box-shadow: inset 0 0 0 2px var(--primary);
+        }
+
+        .payment-calendar-day-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 27px;
+            height: 27px;
+            margin-bottom: 7px;
+            border-radius: 50%;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .payment-calendar-day.today .payment-calendar-day-number {
+            background: var(--primary);
+            color: white;
+        }
+
+        .payment-calendar-events {
+            display: grid;
+            gap: 6px;
+        }
+
+        .payment-calendar-event {
+            width: 100%;
+            padding: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-left: 4px solid var(--warning);
+            border-radius: 8px;
+            background: rgba(245, 158, 11, 0.11);
+            color: var(--text-primary);
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .payment-calendar-event:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .payment-calendar-event.atrasado {
+            border-color: rgba(239, 68, 68, 0.3);
+            border-left-color: var(--error);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .payment-calendar-event.pagado {
+            border-color: rgba(16, 185, 129, 0.3);
+            border-left-color: var(--success);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .payment-calendar-event strong,
+        .payment-calendar-event span {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .payment-calendar-event strong {
+            margin-bottom: 3px;
+            font-size: 12px;
+        }
+
+        .payment-calendar-event span {
+            color: var(--text-secondary);
+            font-size: 10px;
+        }
+
+        .payment-calendar-loading,
+        .payment-calendar-empty {
+            grid-column: 1 / -1;
+            padding: 42px 20px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .payment-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            margin: 18px 0;
+        }
+
+        .payment-detail-field {
+            padding: 13px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--bg-light);
+        }
+
+        .payment-detail-field span,
+        .payment-detail-field strong {
+            display: block;
+        }
+
+        .payment-detail-field span {
+            margin-bottom: 5px;
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .payment-late-summary {
+            padding: 15px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+            font-weight: 600;
+        }
+
+        .payment-paid-summary {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .payment-scope-options {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .payment-scope-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--bg-white);
+            cursor: pointer;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .payment-scope-option:hover,
+        .payment-scope-option.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .payment-scope-option input {
+            width: auto;
+            margin: 0;
+        }
+
+        .payment-scope-option > .material-symbols-outlined {
+            color: var(--primary);
+            font-size: 28px;
+        }
+
+        .payment-scope-option strong,
+        .payment-scope-option small {
+            display: block;
+        }
+
+        .payment-scope-option small {
+            margin-top: 4px;
+            color: var(--text-secondary);
+            line-height: 1.35;
+        }
+
+        .payment-creation-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 14px;
+            border-radius: 10px;
+            background: var(--primary-light);
+            color: var(--text-secondary);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .payment-creation-note .material-symbols-outlined {
+            color: var(--primary);
+            font-size: 20px;
+        }
+
+        @media (max-width: 760px) {
+            .payment-calendar-toolbar {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .payment-calendar-navigation,
+            .payment-calendar-actions {
+                justify-content: center;
+            }
+
+            .payment-calendar-title {
+                min-width: 0;
+                flex: 1;
+                font-size: 17px;
+            }
+
+            .payment-calendar-shell {
+                overflow-x: auto;
+            }
+
+            .payment-calendar-weekdays,
+            .payment-calendar-grid {
+                min-width: 760px;
+            }
+
+            .payment-detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-scope-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* ========== SCHEDULE CONTROLS ========== */
         .schedule-controls {
             display: grid;
@@ -1694,12 +1989,41 @@
                             <span class="material-symbols-outlined">visibility</span> Ver Pagos
                         </button>
                         <button class="btn-toggle" id="btn-crear-tipo-pago" onclick="setPaymentMode('tipo')">
-                            <span class="material-symbols-outlined">add_circle</span> Crear Tipo de Pago
+                            <span class="material-symbols-outlined">add_circle</span> Crear Pagos
                         </button>
                     </div>
 
-                    <input type="text" id="searchPaymentStudent" class="search-input" placeholder="Busca un alumno..." onkeyup="filterPaymentStudents()">
-                    <div class="list-container" id="paymentStudentsContainer"></div>
+                    <div class="payment-calendar-shell">
+                        <div class="payment-calendar-toolbar">
+                            <div class="payment-calendar-navigation">
+                                <button type="button" class="btn btn-secondary" onclick="changePaymentMonth(-1)" aria-label="Mes anterior">
+                                    <span class="material-symbols-outlined">chevron_left</span>
+                                </button>
+                                <h2 class="payment-calendar-title" id="paymentCalendarTitle">Calendario de pagos</h2>
+                                <button type="button" class="btn btn-secondary" onclick="changePaymentMonth(1)" aria-label="Mes siguiente">
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </button>
+                            </div>
+                            <div class="payment-calendar-actions">
+                                <button type="button" class="btn btn-secondary" onclick="goToCurrentPaymentMonth()">Hoy</button>
+                                <button type="button" class="btn btn-primary" onclick="openAddPaymentModal()">
+                                    <span class="material-symbols-outlined">add</span> Agregar Pago
+                                </button>
+                            </div>
+                        </div>
+                        <div class="payment-calendar-weekdays">
+                            <div class="payment-calendar-weekday">Lun</div>
+                            <div class="payment-calendar-weekday">Mar</div>
+                            <div class="payment-calendar-weekday">Mié</div>
+                            <div class="payment-calendar-weekday">Jue</div>
+                            <div class="payment-calendar-weekday">Vie</div>
+                            <div class="payment-calendar-weekday">Sáb</div>
+                            <div class="payment-calendar-weekday">Dom</div>
+                        </div>
+                        <div class="payment-calendar-grid" id="paymentCalendarGrid">
+                            <div class="payment-calendar-loading">Cargando pagos...</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="paymentDetailView" style="display: none;">
@@ -1721,20 +2045,67 @@
                         <span class="material-symbols-outlined">arrow_back</span> Volver
                     </button>
                     <div class="card">
-                        <h2 style="font-size: 24px; margin-bottom: 10px;">Crear Nuevo Tipo de Pago</h2>
+                        <h2 style="font-size: 24px; margin-bottom: 8px;">Crear Pagos</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 22px;">
+                            Crea el pago para todos los alumnos o asígnalo solamente a una persona.
+                        </p>
                         <div class="form-group">
-                            <label>Nombre del Tipo de Pago</label>
+                            <label>¿A quién se le asignará?</label>
+                            <div class="payment-scope-options">
+                                <label class="payment-scope-option active" id="paymentScopeGeneralOption">
+                                    <input type="radio" name="paymentScope" value="general" checked onchange="setPaymentCreationScope('general')">
+                                    <span class="material-symbols-outlined">groups</span>
+                                    <span>
+                                        <strong>Todos los alumnos</strong>
+                                        <small>Crea un pago individual para cada alumno</small>
+                                    </span>
+                                </label>
+                                <label class="payment-scope-option" id="paymentScopeIndividualOption">
+                                    <input type="radio" name="paymentScope" value="individual" onchange="setPaymentCreationScope('individual')">
+                                    <span class="material-symbols-outlined">person</span>
+                                    <span>
+                                        <strong>Un alumno</strong>
+                                        <small>Elige una persona específica</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group" id="paymentTypeStudentGroup" style="display: none;">
+                            <label>Alumno</label>
+                            <select id="paymentTypeStudent">
+                                <option value="">-- Selecciona un alumno --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Título / Concepto</label>
                             <input type="text" id="paymentTypeName" placeholder="Ej: Colegiatura Mensual">
                         </div>
                         <div class="form-group">
                             <label>Descripción</label>
-                            <textarea id="paymentTypeDesc" placeholder="Describe este tipo de pago..."></textarea>
+                            <textarea id="paymentTypeDesc" placeholder="Detalles del pago para el alumno..."></textarea>
                         </div>
                         <div class="form-group">
-                            <label>Monto (opcional)</label>
-                            <input type="number" id="paymentTypeAmount" placeholder="0.00" step="0.01">
+                            <label>Monto</label>
+                            <input type="number" id="paymentTypeAmount" placeholder="0.00" step="0.01" min="0.01">
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="createPaymentType()">Crear Tipo de Pago</button>
+                        <div class="form-group">
+                            <label>Moneda</label>
+                            <select id="paymentTypeCurrency">
+                                <option value="PEN">PEN (Soles)</option>
+                                <option value="USD">USD (Dólares)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de Vencimiento</label>
+                            <input type="date" id="paymentTypeDueDate">
+                        </div>
+                        <div class="payment-creation-note">
+                            <span class="material-symbols-outlined">info</span>
+                            Los pagos se crearán como pendientes y, después del vencimiento, sumarán S/ 5.00 por día.
+                        </div>
+                        <button type="button" class="btn btn-primary" id="createPaymentTypeButton" onclick="createPaymentType()" style="margin-top: 20px;">
+                            <span class="material-symbols-outlined">save</span> Crear y Guardar Pagos
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1973,7 +2344,14 @@
     <div class="modal-overlay" id="addPaymentModal" onclick="if(event.target === this) closeAddPaymentModal()">
         <div class="modal-content" style="max-width: 600px; text-align: left;">
             <h2>Agregar Nuevo Pago</h2>
-            
+
+            <div class="form-group">
+                <label>Alumno</label>
+                <select id="modalPaymentStudent">
+                    <option value="">-- Selecciona un alumno --</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <label>Concepto / Tipo de Pago</label>
                 <input type="text" id="modalPaymentConcept" placeholder="Ej: Colegiatura Junio 2026">
@@ -1997,21 +2375,35 @@
                 <input type="date" id="modalPaymentDueDate">
             </div>
 
-            <div class="form-group">
-                <label>Estado Inicial</label>
-                <select id="modalPaymentStatus">
-                    <option value="pendiente">Pendiente</option>
-                    <option value="pagado">Pagado</option>
-                    <option value="atrasado">Atrasado</option>
-                </select>
-            </div>
-
             <div class="btn-group" style="margin-top: 25px;">
                 <button type="button" class="btn btn-primary" style="flex: 1;" onclick="savePago()">
                     <span class="material-symbols-outlined">save</span> Guardar Pago
                 </button>
                 <button type="button" class="btn btn-secondary" style="flex: 1;" onclick="closeAddPaymentModal()">
                     Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="paymentDetailModal" onclick="if(event.target === this) closePaymentDetailModal()">
+        <div class="modal-content" style="max-width: 650px; text-align: left;">
+            <h2 id="paymentDetailTitle">Detalle del pago</h2>
+            <div class="payment-detail-grid" id="paymentDetailGrid"></div>
+            <div id="paymentLateSummary"></div>
+            <div id="paymentConfirmationSection">
+                <div class="form-group">
+                    <label>Para confirmar, escribe <strong>pagado</strong></label>
+                    <input type="text" id="paymentPaidConfirmation" placeholder="Escribe pagado" autocomplete="off">
+                </div>
+                <button type="button" class="btn btn-primary" id="markPaymentPaidButton" onclick="markSelectedPaymentAsPaid()">
+                    <span class="material-symbols-outlined">task_alt</span> Marcar como Pagado
+                </button>
+            </div>
+            <div class="btn-group" style="margin-top: 22px;">
+                <button type="button" class="btn btn-secondary" style="flex: 1;" onclick="closePaymentDetailModal()">Cerrar</button>
+                <button type="button" class="btn btn-danger" id="deletePaymentButton" onclick="deleteSelectedPayment()" style="flex: 1;">
+                    <span class="material-symbols-outlined">delete</span> Eliminar
                 </button>
             </div>
         </div>
@@ -2033,6 +2425,7 @@
             query, 
             where, 
             addDoc, 
+            writeBatch,
             serverTimestamp 
         } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
@@ -3914,6 +4307,536 @@
             alert("✅ Función disponible próximamente");
         };
 
+        // ========== PAYMENTS - MONTHLY CALENDAR ==========
+        let paymentCalendarDate = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+        let calendarPayments = [];
+        let selectedCalendarPayment = null;
+        let paymentCreationScope = 'general';
+        const PAYMENT_DAILY_LATE_FEE = 5;
+
+        function parsePaymentDate(dateValue) {
+            if (!dateValue) return null;
+            const parts = String(dateValue).split('-').map(Number);
+            if (parts.length !== 3 || parts.some(Number.isNaN)) return null;
+            return new Date(parts[0], parts[1] - 1, parts[2]);
+        }
+
+        function formatPaymentDateKey(date) {
+            return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+        }
+
+        function formatPaymentDate(dateValue) {
+            const date = parsePaymentDate(dateValue);
+            if (!date) return 'Sin fecha';
+            return date.toLocaleDateString('es-PE', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+
+        function formatPaymentTimestamp(value) {
+            if (!value) return 'Recién creado';
+            const date = typeof value.toDate === 'function' ? value.toDate() : new Date(value);
+            if (Number.isNaN(date.getTime())) return 'Sin fecha';
+            return date.toLocaleString('es-PE', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function formatPaymentMoney(amount, currency = 'PEN') {
+            const value = Number(amount || 0);
+            if (currency === 'USD') return `US$ ${value.toFixed(2)}`;
+            return `S/ ${value.toFixed(2)}`;
+        }
+
+        function calculatePaymentAmounts(payment) {
+            const baseAmount = Number(payment.monto || 0);
+            const isPaid = payment.estado === 'pagado';
+
+            if (isPaid) {
+                const lateDays = Number(payment.diasMoraAlPagar || 0);
+                const lateFee = Number(payment.moraPagada ?? (lateDays * PAYMENT_DAILY_LATE_FEE));
+                return {
+                    lateDays,
+                    lateFee,
+                    total: Number(payment.montoPagado ?? (baseAmount + lateFee))
+                };
+            }
+
+            const dueDate = parsePaymentDate(payment.fechaVencimiento);
+            if (!dueDate) return { lateDays: 0, lateFee: 0, total: baseAmount };
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            dueDate.setHours(0, 0, 0, 0);
+            const lateDays = Math.max(0, Math.floor((today - dueDate) / 86400000));
+            const lateFee = lateDays * PAYMENT_DAILY_LATE_FEE;
+            return { lateDays, lateFee, total: baseAmount + lateFee };
+        }
+
+        function getPaymentTotalLabel(payment, amounts) {
+            if ((payment.moneda || 'PEN') === 'USD' && amounts.lateFee > 0) {
+                return `${formatPaymentMoney(payment.monto, 'USD')} + ${formatPaymentMoney(amounts.lateFee, 'PEN')} de mora`;
+            }
+            return formatPaymentMoney(amounts.total, payment.moneda || 'PEN');
+        }
+
+        function getPaymentVisualStatus(payment, amounts) {
+            if (payment.estado === 'pagado') return 'pagado';
+            return amounts.lateDays > 0 ? 'atrasado' : 'pendiente';
+        }
+
+        function renderPaymentCalendar() {
+            const title = document.getElementById('paymentCalendarTitle');
+            const grid = document.getElementById('paymentCalendarGrid');
+            if (!title || !grid) return;
+
+            title.textContent = paymentCalendarDate.toLocaleDateString('es-PE', {
+                month: 'long',
+                year: 'numeric'
+            });
+
+            const firstOfMonth = new Date(
+                paymentCalendarDate.getFullYear(),
+                paymentCalendarDate.getMonth(),
+                1
+            );
+            const mondayOffset = (firstOfMonth.getDay() + 6) % 7;
+            const firstCalendarDay = new Date(firstOfMonth);
+            firstCalendarDay.setDate(firstOfMonth.getDate() - mondayOffset);
+
+            const paymentsByDate = new Map();
+            calendarPayments.forEach((payment) => {
+                if (!payment.fechaVencimiento) return;
+                if (!paymentsByDate.has(payment.fechaVencimiento)) {
+                    paymentsByDate.set(payment.fechaVencimiento, []);
+                }
+                paymentsByDate.get(payment.fechaVencimiento).push(payment);
+            });
+
+            const todayKey = formatPaymentDateKey(new Date());
+            let html = '';
+
+            for (let index = 0; index < 42; index++) {
+                const day = new Date(firstCalendarDay);
+                day.setDate(firstCalendarDay.getDate() + index);
+                const dayKey = formatPaymentDateKey(day);
+                const outsideMonth = day.getMonth() !== paymentCalendarDate.getMonth();
+                const classes = [
+                    'payment-calendar-day',
+                    outsideMonth ? 'outside-month' : '',
+                    dayKey === todayKey ? 'today' : ''
+                ].filter(Boolean).join(' ');
+                const payments = paymentsByDate.get(dayKey) || [];
+
+                html += `<div class="${classes}" data-payment-date="${dayKey}">`;
+                html += `<div class="payment-calendar-day-number">${day.getDate()}</div>`;
+                html += '<div class="payment-calendar-events">';
+
+                payments.forEach((payment) => {
+                    const amounts = calculatePaymentAmounts(payment);
+                    const status = getPaymentVisualStatus(payment, amounts);
+                    html += `
+                        <button type="button" class="payment-calendar-event ${status}" onclick="openPaymentDetail('${payment.id}')">
+                            <strong>${escapeHtml(payment.concepto || 'Sin título')}</strong>
+                            <span>${escapeHtml(payment.alumnoNombre || 'Persona sin nombre')}</span>
+                            <span>Creado: ${escapeHtml(formatPaymentTimestamp(payment.createdAt))}</span>
+                            <span>Debe pagar: ${escapeHtml(formatPaymentDate(payment.fechaVencimiento))}</span>
+                            <span>${escapeHtml(getPaymentTotalLabel(payment, amounts))}</span>
+                        </button>
+                    `;
+                });
+
+                html += '</div></div>';
+            }
+
+            grid.innerHTML = html;
+        }
+
+        window.loadPaymentCalendar = async function() {
+            const grid = document.getElementById('paymentCalendarGrid');
+            if (grid) grid.innerHTML = '<div class="payment-calendar-loading">Cargando pagos...</div>';
+
+            try {
+                const paymentsSnapshot = await getDocs(collection(db, 'pagos'));
+                calendarPayments = paymentsSnapshot.docs.map((paymentDoc) => ({
+                    id: paymentDoc.id,
+                    ...paymentDoc.data()
+                }));
+                calendarPayments.sort((a, b) => {
+                    return String(a.fechaVencimiento || '').localeCompare(String(b.fechaVencimiento || ''));
+                });
+                renderPaymentCalendar();
+            } catch (error) {
+                console.error('Error al cargar el calendario de pagos:', error);
+                if (grid) {
+                    grid.innerHTML = `<div class="payment-calendar-empty">No se pudo cargar el calendario: ${escapeHtml(error.message)}</div>`;
+                }
+            }
+        };
+
+        window.changePaymentMonth = function(offset) {
+            paymentCalendarDate = new Date(
+                paymentCalendarDate.getFullYear(),
+                paymentCalendarDate.getMonth() + offset,
+                1
+            );
+            renderPaymentCalendar();
+        };
+
+        window.goToCurrentPaymentMonth = function() {
+            const today = new Date();
+            paymentCalendarDate = new Date(today.getFullYear(), today.getMonth(), 1);
+            renderPaymentCalendar();
+        };
+
+        window.setPaymentMode = function(mode) {
+            document.querySelectorAll('#paymentsListView .btn-toggle').forEach((button) => {
+                button.classList.remove('active');
+            });
+
+            const paymentsListView = document.getElementById('paymentsListView');
+            const legacyDetailView = document.getElementById('paymentDetailView');
+            const createTypeView = document.getElementById('createPaymentTypeView');
+
+            if (mode === 'ver') {
+                document.getElementById('btn-ver-pagos')?.classList.add('active');
+                paymentsListView.style.display = 'block';
+                if (legacyDetailView) legacyDetailView.style.display = 'none';
+                createTypeView.style.display = 'none';
+                return window.loadPaymentCalendar();
+            }
+
+            document.getElementById('btn-crear-tipo-pago')?.classList.add('active');
+            paymentsListView.style.display = 'none';
+            if (legacyDetailView) legacyDetailView.style.display = 'none';
+            createTypeView.style.display = 'block';
+            preparePaymentCreationForm();
+        };
+
+        function populatePaymentStudentSelect() {
+            const select = document.getElementById('modalPaymentStudent');
+            const students = appState.allUsers
+                .filter((user) => user.rol === 'alumno')
+                .sort((a, b) => (a.nombre || '').localeCompare(b.nombre || ''));
+
+            select.innerHTML = '<option value="">-- Selecciona un alumno --</option>';
+            students.forEach((student) => {
+                const option = document.createElement('option');
+                option.value = student.id;
+                option.textContent = student.codigo
+                    ? `${student.nombre || 'Sin nombre'} - ${student.codigo}`
+                    : (student.nombre || 'Sin nombre');
+                select.appendChild(option);
+            });
+        }
+
+        function populatePaymentTypeStudentSelect() {
+            const select = document.getElementById('paymentTypeStudent');
+            const students = appState.allUsers
+                .filter((user) => user.rol === 'alumno')
+                .sort((a, b) => (a.nombre || '').localeCompare(b.nombre || ''));
+
+            select.innerHTML = '<option value="">-- Selecciona un alumno --</option>';
+            students.forEach((student) => {
+                const option = document.createElement('option');
+                option.value = student.id;
+                option.textContent = student.codigo
+                    ? `${student.nombre || 'Sin nombre'} - ${student.codigo}`
+                    : (student.nombre || 'Sin nombre');
+                select.appendChild(option);
+            });
+        }
+
+        window.setPaymentCreationScope = function(scope) {
+            paymentCreationScope = scope === 'individual' ? 'individual' : 'general';
+            document.getElementById('paymentScopeGeneralOption').classList.toggle(
+                'active',
+                paymentCreationScope === 'general'
+            );
+            document.getElementById('paymentScopeIndividualOption').classList.toggle(
+                'active',
+                paymentCreationScope === 'individual'
+            );
+            document.getElementById('paymentTypeStudentGroup').style.display =
+                paymentCreationScope === 'individual' ? 'block' : 'none';
+
+            const selectedRadio = document.querySelector(
+                `input[name="paymentScope"][value="${paymentCreationScope}"]`
+            );
+            if (selectedRadio) selectedRadio.checked = true;
+        };
+
+        async function preparePaymentCreationForm() {
+            if (appState.allUsers.length === 0) await loadUsers();
+            populatePaymentTypeStudentSelect();
+            document.getElementById('paymentTypeStudent').value = '';
+            document.getElementById('paymentTypeName').value = '';
+            document.getElementById('paymentTypeDesc').value = '';
+            document.getElementById('paymentTypeAmount').value = '';
+            document.getElementById('paymentTypeCurrency').value = 'PEN';
+            document.getElementById('paymentTypeDueDate').value = formatPaymentDateKey(new Date());
+            window.setPaymentCreationScope('general');
+        }
+
+        window.createPaymentType = async function() {
+            const title = document.getElementById('paymentTypeName').value.trim();
+            const description = document.getElementById('paymentTypeDesc').value.trim();
+            const amountValue = document.getElementById('paymentTypeAmount').value;
+            const amount = Number(amountValue);
+            const currency = document.getElementById('paymentTypeCurrency').value;
+            const dueDate = document.getElementById('paymentTypeDueDate').value;
+            const selectedStudentId = document.getElementById('paymentTypeStudent').value;
+            const allStudents = appState.allUsers.filter((user) => user.rol === 'alumno');
+            const targetStudents = paymentCreationScope === 'general'
+                ? allStudents
+                : allStudents.filter((student) => student.id === selectedStudentId);
+
+            if (!title || !amountValue || !Number.isFinite(amount) || amount <= 0 || !dueDate) {
+                alert('Completa el título, monto y fecha de vencimiento.');
+                return;
+            }
+
+            if (paymentCreationScope === 'individual' && targetStudents.length === 0) {
+                alert('Selecciona el alumno que recibirá este pago.');
+                return;
+            }
+
+            if (paymentCreationScope === 'general' && targetStudents.length === 0) {
+                alert('No hay alumnos disponibles para crear el pago general.');
+                return;
+            }
+
+            const button = document.getElementById('createPaymentTypeButton');
+            const paymentGroupId = globalThis.crypto?.randomUUID?.()
+                || `pago-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+            const createdBy = appState.currentUserData?.nombre || appState.currentUserEmail || 'Usuario';
+            const commonData = {
+                concepto: title,
+                descripcion: description,
+                monto: amount,
+                moneda: currency,
+                fechaVencimiento: dueDate,
+                estado: 'pendiente',
+                alcance: paymentCreationScope,
+                grupoPagoId: paymentGroupId,
+                moraDiaria: PAYMENT_DAILY_LATE_FEE,
+                createdBy,
+                createdById: appState.currentUserUid,
+                createdAt: serverTimestamp()
+            };
+
+            button.disabled = true;
+            button.innerHTML = '<span class="loading-spinner"></span> Guardando pagos...';
+
+            try {
+                for (let index = 0; index < targetStudents.length; index += 450) {
+                    const batch = writeBatch(db);
+                    const studentsChunk = targetStudents.slice(index, index + 450);
+
+                    studentsChunk.forEach((student) => {
+                        const paymentRef = doc(collection(db, 'pagos'));
+                        batch.set(paymentRef, {
+                            ...commonData,
+                            alumnoId: student.id,
+                            alumnoNombre: student.nombre || 'Sin nombre',
+                            alumnoCodigo: student.codigo || ''
+                        });
+                    });
+
+                    await batch.commit();
+                }
+
+                const due = parsePaymentDate(dueDate);
+                if (due) {
+                    paymentCalendarDate = new Date(due.getFullYear(), due.getMonth(), 1);
+                }
+                await window.setPaymentMode('ver');
+
+                const message = paymentCreationScope === 'general'
+                    ? `Pago general creado para ${targetStudents.length} alumno${targetStudents.length === 1 ? '' : 's'}.`
+                    : `Pago creado para ${targetStudents[0].nombre || 'el alumno seleccionado'}.`;
+                alert(message);
+            } catch (error) {
+                console.error('Error al crear los pagos:', error);
+                alert(`No se pudieron guardar los pagos: ${error.message}`);
+            } finally {
+                button.disabled = false;
+                button.innerHTML = '<span class="material-symbols-outlined">save</span> Crear y Guardar Pagos';
+            }
+        };
+
+        window.openAddPaymentModal = async function() {
+            if (appState.allUsers.length === 0) await loadUsers();
+            populatePaymentStudentSelect();
+            document.getElementById('modalPaymentStudent').value = '';
+            document.getElementById('modalPaymentConcept').value = '';
+            document.getElementById('modalPaymentAmount').value = '';
+            document.getElementById('modalPaymentCurrency').value = 'PEN';
+            document.getElementById('modalPaymentDueDate').value = formatPaymentDateKey(new Date());
+            document.getElementById('addPaymentModal').classList.add('active');
+        };
+
+        window.closeAddPaymentModal = function() {
+            document.getElementById('addPaymentModal').classList.remove('active');
+        };
+
+        window.savePago = async function() {
+            const studentId = document.getElementById('modalPaymentStudent').value;
+            const student = appState.allUsers.find((user) => user.id === studentId);
+            const concepto = document.getElementById('modalPaymentConcept').value.trim();
+            const amountValue = document.getElementById('modalPaymentAmount').value;
+            const amount = Number(amountValue);
+            const currency = document.getElementById('modalPaymentCurrency').value;
+            const dueDate = document.getElementById('modalPaymentDueDate').value;
+            const status = 'pendiente';
+
+            if (!student || !concepto || !amountValue || !Number.isFinite(amount) || amount <= 0 || !dueDate) {
+                alert('Completa el alumno, concepto, monto y fecha de vencimiento.');
+                return;
+            }
+
+            try {
+                const paymentData = {
+                    alumnoId: student.id,
+                    alumnoNombre: student.nombre || 'Sin nombre',
+                    concepto,
+                    monto: amount,
+                    moneda: currency,
+                    fechaVencimiento: dueDate,
+                    estado: status,
+                    moraDiaria: PAYMENT_DAILY_LATE_FEE,
+                    createdAt: serverTimestamp(),
+                    createdBy: appState.currentUserData?.nombre || appState.currentUserEmail || 'Usuario'
+                };
+
+                await addDoc(collection(db, 'pagos'), paymentData);
+                closeAddPaymentModal();
+                await window.loadPaymentCalendar();
+                alert('Pago guardado correctamente.');
+            } catch (error) {
+                console.error('Error al guardar el pago:', error);
+                alert(`No se pudo guardar el pago: ${error.message}`);
+            }
+        };
+
+        window.openPaymentDetail = function(paymentId) {
+            const payment = calendarPayments.find((item) => item.id === paymentId);
+            if (!payment) {
+                alert('No se encontró este pago.');
+                return;
+            }
+
+            selectedCalendarPayment = payment;
+            const amounts = calculatePaymentAmounts(payment);
+            const status = getPaymentVisualStatus(payment, amounts);
+            const statusLabel = status === 'pagado'
+                ? 'Pagado'
+                : (status === 'atrasado' ? 'Atrasado' : 'Pendiente');
+
+            document.getElementById('paymentDetailTitle').textContent = payment.concepto || 'Detalle del pago';
+            document.getElementById('paymentDetailGrid').innerHTML = `
+                <div class="payment-detail-field"><span>Título</span><strong>${escapeHtml(payment.concepto || 'Sin título')}</strong></div>
+                <div class="payment-detail-field"><span>Persona</span><strong>${escapeHtml(payment.alumnoNombre || 'Sin nombre')}</strong></div>
+                ${payment.descripcion ? `<div class="payment-detail-field" style="grid-column: 1 / -1;"><span>Descripción</span><strong>${escapeHtml(payment.descripcion)}</strong></div>` : ''}
+                <div class="payment-detail-field"><span>Creado</span><strong>${escapeHtml(formatPaymentTimestamp(payment.createdAt))}</strong></div>
+                <div class="payment-detail-field"><span>Creado por</span><strong>${escapeHtml(payment.createdBy || 'Sin información')}</strong></div>
+                <div class="payment-detail-field"><span>Se debe pagar</span><strong>${escapeHtml(formatPaymentDate(payment.fechaVencimiento))}</strong></div>
+                <div class="payment-detail-field"><span>Monto original</span><strong>${escapeHtml(formatPaymentMoney(payment.monto, payment.moneda || 'PEN'))}</strong></div>
+                <div class="payment-detail-field"><span>Mora acumulada</span><strong>${escapeHtml(formatPaymentMoney(amounts.lateFee, 'PEN'))}</strong></div>
+                <div class="payment-detail-field"><span>Total actual</span><strong>${escapeHtml(getPaymentTotalLabel(payment, amounts))}</strong></div>
+                <div class="payment-detail-field"><span>Estado</span><strong>${statusLabel}</strong></div>
+            `;
+
+            const summary = document.getElementById('paymentLateSummary');
+            if (payment.estado === 'pagado') {
+                summary.className = 'payment-late-summary payment-paid-summary';
+                summary.textContent = `Pago confirmado${payment.paidAt ? ` el ${formatPaymentTimestamp(payment.paidAt)}` : ''}.`;
+            } else if (amounts.lateDays > 0) {
+                summary.className = 'payment-late-summary';
+                summary.textContent = `${amounts.lateDays} día${amounts.lateDays === 1 ? '' : 's'} de atraso × S/ 5.00 = ${formatPaymentMoney(amounts.lateFee, 'PEN')} de mora.`;
+            } else {
+                summary.className = '';
+                summary.textContent = 'Este pago todavía se encuentra dentro de su fecha límite.';
+            }
+
+            document.getElementById('paymentConfirmationSection').style.display =
+                payment.estado === 'pagado' ? 'none' : 'block';
+            document.getElementById('paymentPaidConfirmation').value = '';
+            document.getElementById('paymentDetailModal').classList.add('active');
+        };
+
+        window.closePaymentDetailModal = function() {
+            document.getElementById('paymentDetailModal').classList.remove('active');
+            document.getElementById('paymentPaidConfirmation').value = '';
+            selectedCalendarPayment = null;
+        };
+
+        window.markSelectedPaymentAsPaid = async function() {
+            if (!selectedCalendarPayment) return;
+            const confirmation = document.getElementById('paymentPaidConfirmation').value.trim().toLowerCase();
+            if (confirmation !== 'pagado') {
+                alert('Para confirmar el cambio debes escribir: pagado');
+                return;
+            }
+
+            const button = document.getElementById('markPaymentPaidButton');
+            const amounts = calculatePaymentAmounts(selectedCalendarPayment);
+            button.disabled = true;
+            button.innerHTML = '<span class="loading-spinner"></span> Guardando...';
+
+            try {
+                await updateDoc(doc(db, 'pagos', selectedCalendarPayment.id), {
+                    estado: 'pagado',
+                    paidAt: serverTimestamp(),
+                    paidBy: appState.currentUserData?.nombre || appState.currentUserEmail || 'Usuario',
+                    diasMoraAlPagar: amounts.lateDays,
+                    moraPagada: amounts.lateFee,
+                    montoPagado: amounts.total,
+                    updatedAt: serverTimestamp()
+                });
+                closePaymentDetailModal();
+                await window.loadPaymentCalendar();
+                alert('Pago marcado como Pagado correctamente.');
+            } catch (error) {
+                console.error('Error al marcar el pago:', error);
+                alert(`No se pudo actualizar el pago: ${error.message}`);
+            } finally {
+                button.disabled = false;
+                button.innerHTML = '<span class="material-symbols-outlined">task_alt</span> Marcar como Pagado';
+            }
+        };
+
+        window.deleteSelectedPayment = async function() {
+            if (!selectedCalendarPayment) return;
+            if (!confirm('¿Estás seguro de que deseas eliminar este pago?')) return;
+
+            try {
+                await deleteDoc(doc(db, 'pagos', selectedCalendarPayment.id));
+                closePaymentDetailModal();
+                await window.loadPaymentCalendar();
+                alert('Pago eliminado.');
+            } catch (error) {
+                console.error('Error al eliminar el pago:', error);
+                alert(`No se pudo eliminar el pago: ${error.message}`);
+            }
+        };
+
+        window.backToPaymentsList = function() {
+            window.setPaymentMode('ver');
+        };
+
+        window.setInterval(() => {
+            if (document.getElementById('view-pagos')?.classList.contains('active')) {
+                renderPaymentCalendar();
+            }
+        }, 60000);
+
         // ========== THEME - TOGGLE ==========
         window.toggleTheme = function() {
             const html = document.documentElement;
@@ -3984,6 +4907,10 @@
 
             const selectedView = document.getElementById('view-' + viewName);
             if (selectedView) selectedView.classList.add('active');
+
+            if (viewName === 'pagos') {
+                window.setPaymentMode('ver');
+            }
 
             const currentEvent = window.event;
             if(currentEvent && currentEvent.target) {
