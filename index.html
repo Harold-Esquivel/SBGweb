@@ -394,7 +394,7 @@
                 showError('El código no puede estar vacío');
                 return;
             }
-            const email = codigo + '@sbgdirector.com';
+            const email = codigo.toLowerCase() + '@sbgdirector.com';
 
             btn.disabled = true;
             loader.classList.add('show');
@@ -421,7 +421,7 @@
                 return;
             }
 
-            const email = codigo + '@sbgdirector.com';
+            const email = codigo.toLowerCase() + '@sbgdirector.com';
 
             sendPasswordResetEmail(auth, email)
                 .then(() => {
@@ -440,8 +440,10 @@
 
             const errorMessages = {
                 'auth/invalid-email': 'Email inválido',
-                'auth/user-not-found': 'Usuario no encontrado',
-                'auth/wrong-password': 'Contraseña incorrecta',
+                'auth/user-not-found': 'Código o contraseña incorrectos',
+                'auth/wrong-password': 'Código o contraseña incorrectos',
+                'auth/invalid-credential': 'Código o contraseña incorrectos',
+                'auth/invalid-login-credentials': 'Código o contraseña incorrectos',
                 'auth/user-disabled': 'Usuario deshabilitado',
                 'auth/too-many-requests': 'Demasiados intentos. Intenta más tarde.'
             };
@@ -454,6 +456,12 @@
             const errorDiv = document.getElementById('errorMessage');
             errorDiv.textContent = message;
             errorDiv.classList.add('show');
+        }
+
+        const pendingAccessError = sessionStorage.getItem('sbgLoginError');
+        if (pendingAccessError) {
+            sessionStorage.removeItem('sbgLoginError');
+            showError(pendingAccessError);
         }
 
         function clearError() {

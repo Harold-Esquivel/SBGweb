@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "check": "node --experimental-vm-modules scripts/check.mjs",
+    "check:live": "node scripts/check-live.mjs"
+  },
   "dependencies": {
     "firebase": "^12.14.0"
   }
